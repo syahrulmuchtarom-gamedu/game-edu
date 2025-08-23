@@ -8,8 +8,13 @@ export const metadata: Metadata = {
   title: 'Game Edukasi Anak - 30 Permainan Edukatif',
   description: 'Aplikasi game edukasi untuk anak-anak usia 6-12 tahun dengan 30 permainan interaktif yang mendidik dan menyenangkan.',
   manifest: '/manifest.json',
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
   themeColor: '#3b82f6',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
 }
 
 export default function RootLayout({

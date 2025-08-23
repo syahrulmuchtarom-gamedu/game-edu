@@ -13,7 +13,6 @@ const nextConfig = {
   
   // Experimental features
   experimental: {
-    optimizeCss: true,
     gzipSize: true,
   },
   
