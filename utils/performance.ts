@@ -13,7 +13,7 @@ export const measurePerformance = () => {
           'Request': navEntry.responseStart - navEntry.requestStart,
           'Response': navEntry.responseEnd - navEntry.responseStart,
           'DOM Processing': navEntry.domContentLoadedEventStart - navEntry.responseEnd,
-          'Total Load Time': navEntry.loadEventEnd - navEntry.navigationStart,
+          'Total Load Time': navEntry.loadEventEnd - navEntry.startTime,
         });
       }
       
