@@ -504,3 +504,12 @@ export const storySequences = [
     ]
   }
 ];
+
+// Healthy food categories
+export const healthyFoodCategories = {
+  carbs: { name: 'Karbohidrat', foods: ['🍚', '🍞', '🥔'], emoji: '🍚' },
+  protein: { name: 'Protein', foods: ['🐟', '🍗', '🥚'], emoji: '🐟' },
+  vitamins: { name: 'Vitamin', foods: ['🍎', '🍌', '🥕'], emoji: '🍎' },
+  minerals: { name: 'Mineral', foods: ['🥬', '🥦', '🥗'], emoji: '🥬' },
+  dairy: { name: 'Susu', foods: ['🥛', '🧀', '🍦'], emoji: '🥛' }
+};
