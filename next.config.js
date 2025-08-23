@@ -14,8 +14,6 @@ const nextConfig = {
   // Experimental features
   experimental: {
     gzipSize: true,
-    optimizeCss: true,
-    scrollRestoration: true,
   },
   
   // Headers for caching
