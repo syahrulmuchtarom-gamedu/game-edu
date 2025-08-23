@@ -63,6 +63,7 @@ module.exports = {
         'animate-bounce',
         'animate-pulse',
         'animate-wiggle',
+        'animate-spin',
         'celebrate',
         'shake',
         'score-animation'

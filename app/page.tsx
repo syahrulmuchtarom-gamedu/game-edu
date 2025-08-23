@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { games } from '@/utils/gameData';
+import { coreGameData, getExtendedGameData } from '@/utils/gameDataSplit';
 import { getPlayerScore, PlayerScore } from '@/utils/scoreUtils';
 import ScoreTracker from '@/components/ScoreTracker';
 
@@ -11,14 +12,32 @@ export default function HomePage() {
   const [mounted, setMounted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [currentPage, setCurrentPage] = useState(1);
+  const [allGames, setAllGames] = useState(coreGameData);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const GAMES_PER_PAGE = 6;
 
   useEffect(() => {
     setMounted(true);
     setPlayerScore(getPlayerScore());
+    
+    // Lazy load all games after initial render
+    const loadAllGames = async () => {
+      setIsLoadingMore(true);
+      try {
+        const fullGames = await getExtendedGameData();
+        setAllGames(fullGames);
+      } catch (error) {
+        console.error('Failed to load extended games:', error);
+      } finally {
+        setIsLoadingMore(false);
+      }
+    };
+    
+    // Load after 1 second to prioritize initial render
+    setTimeout(loadAllGames, 1000);
   }, []);
 
-  const filteredGames = games.filter(game => selectedCategory === 'all' || game.category === selectedCategory);
+  const filteredGames = allGames.filter(game => selectedCategory === 'all' || game.category === selectedCategory);
   const totalPages = Math.ceil(filteredGames.length / GAMES_PER_PAGE);
   const startIndex = (currentPage - 1) * GAMES_PER_PAGE;
   const currentGames = filteredGames.slice(startIndex, startIndex + GAMES_PER_PAGE);
@@ -87,10 +106,10 @@ export default function HomePage() {
                 : 'bg-white text-gray-600 hover:bg-blue-100'
             }`}
           >
-            Semua ({games.length})
+            Semua ({allGames.length})
           </button>
-          {Array.from(new Set(games.map(g => g.category))).map(category => {
-            const count = games.filter(g => g.category === category).length;
+          {Array.from(new Set(allGames.map(g => g.category))).map(category => {
+            const count = allGames.filter(g => g.category === category).length;
             return (
               <button
                 key={category}
@@ -112,7 +131,7 @@ export default function HomePage() {
           {currentGames.map((game) => (
             <Link
               key={game.id}
-              href={game.path}
+              href={`/play/${game.id}`}
               className="group block"
             >
               <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 h-full">
@@ -211,11 +230,11 @@ export default function HomePage() {
         <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 mt-12">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-white">
             <div>
-              <div className="text-3xl font-bold">{games.length}</div>
+              <div className="text-3xl font-bold">{allGames.length}</div>
               <div className="text-sm opacity-80">Total Game</div>
             </div>
             <div>
-              <div className="text-3xl font-bold">{Array.from(new Set(games.map(g => g.category))).length}</div>
+              <div className="text-3xl font-bold">{Array.from(new Set(allGames.map(g => g.category))).length}</div>
               <div className="text-sm opacity-80">Kategori</div>
             </div>
             <div>
