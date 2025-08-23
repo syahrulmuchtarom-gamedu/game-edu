@@ -7,7 +7,6 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Game Edukasi Anak - 30 Permainan Edukatif',
   description: 'Aplikasi game edukasi untuk anak-anak usia 6-12 tahun dengan 30 permainan interaktif yang mendidik dan menyenangkan.',
-  manifest: '/manifest.json',
 }
 
 export const viewport = {
@@ -26,10 +25,6 @@ export default function RootLayout({
     <html lang="id">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Game Edukasi Anak" />
       </head>
       <body className={inter.className}>
         {children}

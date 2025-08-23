@@ -4,14 +4,10 @@ import { useEffect } from 'react';
 
 export default function CriticalCSS() {
   useEffect(() => {
-    // Preload critical fonts
+    // Load fonts normally to avoid preload warnings
     const link = document.createElement('link');
-    link.rel = 'preload';
+    link.rel = 'stylesheet';
     link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap';
-    link.as = 'style';
-    link.onload = () => {
-      link.rel = 'stylesheet';
-    };
     document.head.appendChild(link);
 
     // Remove unused CSS after load
