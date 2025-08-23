@@ -345,9 +345,9 @@ export const englishVocab = [
 
 // Science questions
 export const scienceQuestions = [
-  { question: 'Hewan apa yang hidup di air?', options: ['Kucing', 'Ikan', 'Burung'], answer: 1, image: '🐟' },
-  { question: 'Apa yang dibutuhkan tanaman untuk tumbuh?', options: ['Air', 'Coklat', 'Mainan'], answer: 0, image: '🌱' },
-  { question: 'Berapa kaki yang dimiliki laba-laba?', options: ['6', '8', '10'], answer: 1, image: '🕷️' },
+  { question: 'Hewan apa yang hidup di air?', options: ['Kucing', 'Ikan', 'Burung'], answer: 1, image: '🐟', explanation: 'Ikan hidup di air dan bernapas menggunakan insang untuk mengambil oksigen dari air.' },
+  { question: 'Apa yang dibutuhkan tanaman untuk tumbuh?', options: ['Air', 'Coklat', 'Mainan'], answer: 0, image: '🌱', explanation: 'Tanaman membutuhkan air, sinar matahari, dan nutrisi dari tanah untuk bisa tumbuh dengan baik.' },
+  { question: 'Berapa kaki yang dimiliki laba-laba?', options: ['6', '8', '10'], answer: 1, image: '🕷️', explanation: 'Laba-laba memiliki 8 kaki dan termasuk dalam kelompok hewan arthropoda.' },
 ];
 
 // Countries and flags
