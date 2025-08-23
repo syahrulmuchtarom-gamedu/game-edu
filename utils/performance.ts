@@ -43,7 +43,8 @@ export const measurePerformance = () => {
   const scripts = document.querySelectorAll('script[src]');
   let totalSize = 0;
   scripts.forEach(script => {
-    fetch(script.src, { method: 'HEAD' })
+    const scriptElement = script as HTMLScriptElement;
+    fetch(scriptElement.src, { method: 'HEAD' })
       .then(response => {
         const size = response.headers.get('content-length');
         if (size) totalSize += parseInt(size);
