@@ -104,7 +104,7 @@ export default function HomePage() {
                 {category} ({count})
               </button>
             );
-          })
+          })}
         </div>
 
         {/* Games Grid */}
