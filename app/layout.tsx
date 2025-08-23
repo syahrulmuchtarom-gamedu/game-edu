@@ -1,37 +1,51 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import RegisterSW from './register-sw';
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Game Edukasi Anak - Belajar Sambil Bermain',
-  description: 'Aplikasi game edukasi untuk anak-anak dengan 15 permainan seru dan mendidik',
-  keywords: 'game edukasi, anak-anak, belajar, matematika, bahasa, sains',
-  authors: [{ name: 'Educational Games Team' }],
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
-  themeColor: '#4F46E5',
+  title: 'Game Edukasi Anak - 30 Permainan Edukatif',
+  description: 'Aplikasi game edukasi untuk anak-anak usia 6-12 tahun dengan 30 permainan interaktif yang mendidik dan menyenangkan.',
   manifest: '/manifest.json',
-};
+  themeColor: '#3b82f6',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="id">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-        <meta name="theme-color" content="#4F46E5" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Game Edukasi Anak" />
       </head>
       <body className={inter.className}>
-        <RegisterSW />
         {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                      console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                      console.log('SW registration failed: ', registrationError);
+                    });
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
-  );
+  )
 }

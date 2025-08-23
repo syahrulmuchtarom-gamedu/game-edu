@@ -1,31 +1,44 @@
-const CACHE_NAME = 'educational-games-v1';
+const CACHE_NAME = 'game-edu-v1';
 const urlsToCache = [
   '/',
-  '/games/math-adventure',
-  '/games/memory-animals',
-  '/games/spelling-game',
-  '/games/color-patterns',
-  '/games/count-fruits',
-  '/games/interactive-story',
-  '/manifest.json'
+  '/manifest.json',
+  '/icon-192x192.png',
+  '/icon-512x512.png'
 ];
 
+// Install event
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(urlsToCache))
+      .then((cache) => {
+        return cache.addAll(urlsToCache);
+      })
   );
+  self.skipWaiting();
 });
 
+// Fetch event
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
+        // Return cached version or fetch from network
+        return response || fetch(event.request);
+      })
+  );
+});
+
+// Activate event
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
   );
 });
