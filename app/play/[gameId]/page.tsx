@@ -1,15 +1,12 @@
-'use client';
-
-import { use } from 'react';
 import GameLoader from '@/components/GameLoader';
 import { games } from '@/utils/gameData';
 
 interface PlayGamePageProps {
-  params: Promise<{ gameId: string }>;
+  params: { gameId: string };
 }
 
-export default function PlayGamePage({ params }: PlayGamePageProps) {
-  const { gameId } = use(params);
+export default async function PlayGamePage({ params }: PlayGamePageProps) {
+  const { gameId } = await params;
   
   // Validate game exists
   const game = games.find(g => g.id === gameId);
