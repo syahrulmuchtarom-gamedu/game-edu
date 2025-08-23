@@ -9,6 +9,7 @@ import ScoreTracker from '@/components/ScoreTracker';
 export default function HomePage() {
   const [playerScore, setPlayerScore] = useState<PlayerScore | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   useEffect(() => {
     setMounted(true);
@@ -59,9 +60,41 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <button
+            onClick={() => setSelectedCategory('all')}
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+              selectedCategory === 'all'
+                ? 'bg-blue-500 text-white'
+                : 'bg-white text-gray-600 hover:bg-blue-100'
+            }`}
+          >
+            Semua ({games.length})
+          </button>
+          {Array.from(new Set(games.map(g => g.category))).map(category => {
+            const count = games.filter(g => g.category === category).length;
+            return (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                  selectedCategory === category
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white text-gray-600 hover:bg-blue-100'
+                }`}
+              >
+                {category} ({count})
+              </button>
+            );
+          })}
+        </div>
+
         {/* Games Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {games.map((game) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {games
+            .filter(game => selectedCategory === 'all' || game.category === selectedCategory)
+            .map((game) => (
             <Link
               key={game.id}
               href={game.path}
@@ -114,13 +147,35 @@ export default function HomePage() {
           ))}
         </div>
 
+        {/* Stats */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 mt-12">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-white">
+            <div>
+              <div className="text-3xl font-bold">{games.length}</div>
+              <div className="text-sm opacity-80">Total Game</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold">{Array.from(new Set(games.map(g => g.category))).length}</div>
+              <div className="text-sm opacity-80">Kategori</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold">{playerScore?.gamesPlayed || 0}</div>
+              <div className="text-sm opacity-80">Dimainkan</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold">{playerScore?.totalPoints || 0}</div>
+              <div className="text-sm opacity-80">Total Poin</div>
+            </div>
+          </div>
+        </div>
+
         {/* Footer */}
-        <div className="text-center mt-12 text-white/80">
+        <div className="text-center mt-8 text-white/80">
           <p className="text-lg font-semibold mb-2">
             Selamat belajar dan bermain! 🌟
           </p>
           <p className="text-sm">
-            Aplikasi ini dirancang khusus untuk anak-anak usia 6-12 tahun
+            30 Game Edukasi untuk anak-anak usia 6-12 tahun
           </p>
         </div>
       </div>

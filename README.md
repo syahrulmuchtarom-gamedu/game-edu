@@ -1,10 +1,12 @@
 # 🎮 Game Edukasi Anak - Educational Games App
 
-Aplikasi game edukasi untuk anak-anak usia 6-12 tahun dengan 15 permainan interaktif yang mendidik dan menyenangkan.
+Aplikasi game edukasi untuk anak-anak usia 6-12 tahun dengan 30 permainan interaktif yang mendidik dan menyenangkan.
 
 ## 🌟 Fitur Utama
 
-### 15 Game Edukasi Lengkap
+### 30 Game Edukasi Lengkap
+
+**Paket Pertama (15 Game):**
 1. **🧮 Petualangan Matematika** - Belajar matematika dengan visual menarik
 2. **🐱 Memory Hewan** - Game memori dengan kartu hewan
 3. **📝 Tebak Ejaan** - Latihan mengeja kata dengan gambar
@@ -20,6 +22,23 @@ Aplikasi game edukasi untuk anak-anak usia 6-12 tahun dengan 15 permainan intera
 13. **⌨️ Belajar Ketik** - Latihan mengetik untuk anak
 14. **🎨 Campur Warna** - Teori warna dasar
 15. **📚 Cerita Interaktif** - Choose-your-adventure stories
+
+**Paket Kedua (15 Game Baru):**
+16. **🏠 Tebak Rumah Adat** - Mengenal rumah adat Indonesia
+17. **🦷 Kesehatan Gigi** - Belajar merawat gigi yang benar
+18. **🌙 Fase Bulan** - Memahami siklus fase bulan
+19. **🍯 Rantai Makanan** - Menyusun rantai makanan ekosistem
+20. **🎭 Tebak Emosi** - Mengenali ekspresi dan perasaan
+21. **🏔️ Peta Indonesia** - Jelajahi geografi Indonesia
+22. **🌡️ Cuaca & Iklim** - Belajar tentang cuaca
+23. **🚂 Transportasi Tempo Dulu** - Bandingkan transportasi
+24. **🥗 Makanan 4 Sehat 5 Sempurna** - Nutrisi seimbang
+25. **🎨 Menggambar Huruf** - Latihan menulis huruf
+26. **⚖️ Timbangan Matematika** - Persamaan matematika
+27. **🎪 Urutan Kejadian** - Logika sebab-akibat
+28. **🏃♂️ Olahraga & Kesehatan** - Manfaat olahraga
+29. **🔊 Tebak Suara** - Mengenali sumber suara
+30. **🗓️ Hari & Tanggal** - Konsep waktu dan kalender
 
 ### 📱 Optimasi Mobile
 - **Responsive Design** - Sempurna di semua ukuran layar

@@ -9,6 +9,7 @@ export interface Game {
 }
 
 export const games: Game[] = [
+  // Original 15 games
   {
     id: 'math-adventure',
     title: 'Petualangan Matematika',
@@ -143,6 +144,142 @@ export const games: Game[] = [
     difficulty: 'easy',
     category: 'Cerita',
     path: '/games/interactive-story'
+  },
+  // New 15 games
+  {
+    id: 'traditional-houses',
+    title: 'Tebak Rumah Adat',
+    emoji: '🏠',
+    description: 'Kenali rumah adat dari seluruh Indonesia!',
+    difficulty: 'medium',
+    category: 'Budaya',
+    path: '/games/traditional-houses'
+  },
+  {
+    id: 'dental-health',
+    title: 'Kesehatan Gigi',
+    emoji: '🦷',
+    description: 'Belajar cara merawat gigi yang benar!',
+    difficulty: 'easy',
+    category: 'Kesehatan',
+    path: '/games/dental-health'
+  },
+  {
+    id: 'moon-phases',
+    title: 'Fase Bulan',
+    emoji: '🌙',
+    description: 'Pelajari siklus fase bulan!',
+    difficulty: 'medium',
+    category: 'Astronomi',
+    path: '/games/moon-phases'
+  },
+  {
+    id: 'food-chain',
+    title: 'Rantai Makanan',
+    emoji: '🍯',
+    description: 'Susun rantai makanan yang benar!',
+    difficulty: 'medium',
+    category: 'Biologi',
+    path: '/games/food-chain'
+  },
+  {
+    id: 'emotion-guess',
+    title: 'Tebak Emosi',
+    emoji: '🎭',
+    description: 'Kenali berbagai ekspresi emosi!',
+    difficulty: 'easy',
+    category: 'Sosial',
+    path: '/games/emotion-guess'
+  },
+  {
+    id: 'indonesia-map',
+    title: 'Peta Indonesia',
+    emoji: '🏔️',
+    description: 'Jelajahi peta Indonesia!',
+    difficulty: 'hard',
+    category: 'Geografi',
+    path: '/games/indonesia-map'
+  },
+  {
+    id: 'weather-climate',
+    title: 'Cuaca & Iklim',
+    emoji: '🌡️',
+    description: 'Pelajari jenis-jenis cuaca!',
+    difficulty: 'easy',
+    category: 'Sains',
+    path: '/games/weather-climate'
+  },
+  {
+    id: 'old-transportation',
+    title: 'Transportasi Tempo Dulu',
+    emoji: '🚂',
+    description: 'Bandingkan transportasi dulu dan sekarang!',
+    difficulty: 'medium',
+    category: 'Sejarah',
+    path: '/games/old-transportation'
+  },
+  {
+    id: 'healthy-food',
+    title: 'Makanan 4 Sehat 5 Sempurna',
+    emoji: '🥗',
+    description: 'Susun menu makanan sehat!',
+    difficulty: 'medium',
+    category: 'Nutrisi',
+    path: '/games/healthy-food'
+  },
+  {
+    id: 'letter-drawing',
+    title: 'Menggambar Huruf',
+    emoji: '🎨',
+    description: 'Belajar menulis huruf dengan benar!',
+    difficulty: 'easy',
+    category: 'Motorik',
+    path: '/games/letter-drawing'
+  },
+  {
+    id: 'math-balance',
+    title: 'Timbangan Matematika',
+    emoji: '⚖️',
+    description: 'Seimbangkan persamaan matematika!',
+    difficulty: 'medium',
+    category: 'Logika',
+    path: '/games/math-balance'
+  },
+  {
+    id: 'story-sequence',
+    title: 'Urutan Kejadian',
+    emoji: '🎪',
+    description: 'Susun urutan cerita yang benar!',
+    difficulty: 'medium',
+    category: 'Logika',
+    path: '/games/story-sequence'
+  },
+  {
+    id: 'sports-health',
+    title: 'Olahraga & Kesehatan',
+    emoji: '🏃♂️',
+    description: 'Kenali olahraga dan manfaatnya!',
+    difficulty: 'easy',
+    category: 'Kesehatan',
+    path: '/games/sports-health'
+  },
+  {
+    id: 'sound-guess',
+    title: 'Tebak Suara',
+    emoji: '🔊',
+    description: 'Tebak sumber suara yang dimainkan!',
+    difficulty: 'medium',
+    category: 'Audio',
+    path: '/games/sound-guess'
+  },
+  {
+    id: 'calendar-date',
+    title: 'Hari & Tanggal',
+    emoji: '🗓️',
+    description: 'Belajar konsep waktu dan kalender!',
+    difficulty: 'medium',
+    category: 'Waktu',
+    path: '/games/calendar-date'
   }
 ];
 
@@ -277,3 +414,93 @@ export const storyData = {
     }
   }
 };
+
+// Traditional houses data
+export const traditionalHouses = [
+  { name: 'Joglo', region: 'Jawa Tengah', image: '🏠', info: 'Rumah tradisional dengan atap berbentuk kerucut' },
+  { name: 'Gadang', region: 'Sumatera Barat', image: '🏠', info: 'Rumah adat Minangkabau dengan atap melengkung' },
+  { name: 'Tongkonan', region: 'Sulawesi Selatan', image: '🏠', info: 'Rumah adat Toraja dengan atap seperti perahu' },
+  { name: 'Honai', region: 'Papua', image: '🏠', info: 'Rumah bulat tradisional suku Dani' },
+  { name: 'Limas', region: 'Sumatera Selatan', image: '🏠', info: 'Rumah panggung dengan atap limas' },
+  { name: 'Betang', region: 'Kalimantan', image: '🏠', info: 'Rumah panjang suku Dayak' }
+];
+
+// Dental health data
+export const dentalHealthData = {
+  tools: [
+    { name: 'Sikat Gigi', emoji: '🦷', correct: true },
+    { name: 'Pasta Gigi', emoji: '🧴', correct: true },
+    { name: 'Obeng', emoji: '🔧', correct: false },
+    { name: 'Air', emoji: '💧', correct: true }
+  ],
+  steps: [
+    'Basahi sikat gigi',
+    'Oleskan pasta gigi',
+    'Sikat gigi selama 2 menit',
+    'Kumur dengan air bersih'
+  ],
+  foods: {
+    good: ['🥛', '🥕', '🍎', '🥦'],
+    bad: ['🍭', '🍰', '🍬', '🥤']
+  }
+};
+
+// Moon phases data
+export const moonPhases = [
+  { name: 'Bulan Baru', phase: 'new', emoji: '⚫', order: 1 },
+  { name: 'Sabit Muda', phase: 'waxing-crescent', emoji: '🌒', order: 2 },
+  { name: 'Separuh Awal', phase: 'first-quarter', emoji: '🌓', order: 3 },
+  { name: 'Cembung Awal', phase: 'waxing-gibbous', emoji: '🌔', order: 4 },
+  { name: 'Bulan Purnama', phase: 'full', emoji: '🌕', order: 5 },
+  { name: 'Cembung Akhir', phase: 'waning-gibbous', emoji: '🌖', order: 6 },
+  { name: 'Separuh Akhir', phase: 'last-quarter', emoji: '🌗', order: 7 },
+  { name: 'Sabit Tua', phase: 'waning-crescent', emoji: '🌘', order: 8 }
+];
+
+// Emotions data
+export const emotions = [
+  { name: 'Senang', emoji: '😊', situation: 'Mendapat hadiah' },
+  { name: 'Sedih', emoji: '😢', situation: 'Kehilangan mainan' },
+  { name: 'Marah', emoji: '😡', situation: 'Diganggu teman' },
+  { name: 'Takut', emoji: '😨', situation: 'Melihat petir' },
+  { name: 'Terkejut', emoji: '😲', situation: 'Mendengar suara keras' },
+  { name: 'Bingung', emoji: '😕', situation: 'Tidak mengerti pelajaran' }
+];
+
+// Weather data
+export const weatherTypes = [
+  { name: 'Cerah', emoji: '☀️', clothes: ['👕', '🩳'], activity: 'Bermain di luar' },
+  { name: 'Hujan', emoji: '🌧️', clothes: ['🧥', '☔'], activity: 'Bermain di dalam' },
+  { name: 'Berawan', emoji: '☁️', clothes: ['👔'], activity: 'Jalan-jalan' },
+  { name: 'Berangin', emoji: '💨', clothes: ['🧥'], activity: 'Main layang-layang' }
+];
+
+// Sports data
+export const sportsData = [
+  { name: 'Sepak Bola', emoji: '⚽', equipment: '🥅', benefit: 'Melatih kaki dan koordinasi' },
+  { name: 'Renang', emoji: '🏊', equipment: '👙', benefit: 'Melatih seluruh tubuh' },
+  { name: 'Bulu Tangkis', emoji: '🏸', equipment: '🏸', benefit: 'Melatih refleks dan mata' },
+  { name: 'Lari', emoji: '🏃', equipment: '👟', benefit: 'Melatih jantung dan paru-paru' }
+];
+
+// Story sequences
+export const storySequences = [
+  {
+    title: 'Menanam Bunga',
+    scenes: [
+      { order: 1, image: '🌱', text: 'Menanam benih' },
+      { order: 2, image: '💧', text: 'Menyiram tanaman' },
+      { order: 3, image: '🌿', text: 'Tanaman tumbuh' },
+      { order: 4, image: '🌸', text: 'Bunga mekar' }
+    ]
+  },
+  {
+    title: 'Membuat Kue',
+    scenes: [
+      { order: 1, image: '🥚', text: 'Siapkan telur' },
+      { order: 2, image: '🥛', text: 'Tambahkan susu' },
+      { order: 3, image: '🍰', text: 'Aduk adonan' },
+      { order: 4, image: '🎂', text: 'Kue siap disajikan' }
+    ]
+  }
+];
