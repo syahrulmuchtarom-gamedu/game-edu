@@ -35,7 +35,7 @@ export default function CriticalCSS() {
                 const sheet = document.styleSheets[i];
                 if (sheet.cssRules) {
                   for (let j = sheet.cssRules.length - 1; j >= 0; j--) {
-                    const rule = sheet.cssRules[j];
+                    const rule = sheet.cssRules[j] as CSSStyleRule;
                     if (rule.selectorText && rule.selectorText.includes(selector.replace('\\', ''))) {
                       sheet.deleteRule(j);
                     }
