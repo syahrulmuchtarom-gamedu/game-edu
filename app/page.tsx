@@ -10,11 +10,28 @@ export default function HomePage() {
   const [playerScore, setPlayerScore] = useState<PlayerScore | null>(null);
   const [mounted, setMounted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const GAMES_PER_PAGE = 6;
 
   useEffect(() => {
     setMounted(true);
     setPlayerScore(getPlayerScore());
   }, []);
+
+  const filteredGames = games.filter(game => selectedCategory === 'all' || game.category === selectedCategory);
+  const totalPages = Math.ceil(filteredGames.length / GAMES_PER_PAGE);
+  const startIndex = (currentPage - 1) * GAMES_PER_PAGE;
+  const currentGames = filteredGames.slice(startIndex, startIndex + GAMES_PER_PAGE);
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -63,7 +80,7 @@ export default function HomePage() {
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           <button
-            onClick={() => setSelectedCategory('all')}
+            onClick={() => handleCategoryChange('all')}
             className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
               selectedCategory === 'all'
                 ? 'bg-blue-500 text-white'
@@ -77,7 +94,7 @@ export default function HomePage() {
             return (
               <button
                 key={category}
-                onClick={() => setSelectedCategory(category)}
+                onClick={() => handleCategoryChange(category)}
                 className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                   selectedCategory === category
                     ? 'bg-blue-500 text-white'
@@ -87,14 +104,12 @@ export default function HomePage() {
                 {category} ({count})
               </button>
             );
-          })}
+          })
         </div>
 
         {/* Games Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {games
-            .filter(game => selectedCategory === 'all' || game.category === selectedCategory)
-            .map((game) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {currentGames.map((game) => (
             <Link
               key={game.id}
               href={game.path}
@@ -145,6 +160,51 @@ export default function HomePage() {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-4 mt-8">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="px-4 py-2 bg-white text-gray-600 rounded-full font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-100 transition-all"
+            >
+              ← Sebelumnya
+            </button>
+            
+            <div className="flex gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  className={`w-10 h-10 rounded-full font-semibold transition-all ${
+                    currentPage === page
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-white text-gray-600 hover:bg-blue-100'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 bg-white text-gray-600 rounded-full font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-100 transition-all"
+            >
+              Selanjutnya →
+            </button>
+          </div>
+        )}
+
+        {/* Page Info */}
+        <div className="text-center mt-4 text-white/80">
+          <p className="text-sm">
+            Menampilkan {startIndex + 1}-{Math.min(startIndex + GAMES_PER_PAGE, filteredGames.length)} dari {filteredGames.length} game
+            {selectedCategory !== 'all' && ` dalam kategori ${selectedCategory}`}
+          </p>
         </div>
 
         {/* Stats */}
