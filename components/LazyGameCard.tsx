@@ -54,10 +54,10 @@ export default function LazyGameCard({ game, playerScore }: LazyGameCardProps) {
     <div ref={cardRef} className="h-full">
       {isVisible ? (
         <Link href={`/play/${game.id}`} className="group block">
-          <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 h-full">
+          <div className="bg-white/95 rounded-3xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-200 h-full">
             {/* Game Icon */}
             <div className="text-center mb-4">
-              <div className="text-6xl mb-3 group-hover:animate-bounce">
+              <div className="text-5xl mb-3">
                 {game.emoji}
               </div>
               <h3 className="text-xl font-bold text-gray-800 mb-2">
@@ -92,7 +92,7 @@ export default function LazyGameCard({ game, playerScore }: LazyGameCardProps) {
 
             {/* Play Button */}
             <div className="mt-4">
-              <div className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 px-6 rounded-2xl text-center group-hover:from-blue-600 group-hover:to-purple-700 transition-all duration-200">
+              <div className="w-full bg-blue-500 text-white font-bold py-3 px-4 rounded-2xl text-center">
                 Mainkan 🚀
               </div>
             </div>
