@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { games } from '@/utils/gameData';
-import { coreGameData, getExtendedGameData } from '@/utils/gameDataSplit';
+import { games, Game } from '@/utils/gameData';
+import { getExtendedGameData } from '@/utils/gameDataSplit';
 import { getPlayerScore, PlayerScore } from '@/utils/scoreUtils';
 import ScoreTracker from '@/components/ScoreTracker';
 
@@ -12,7 +12,7 @@ export default function HomePage() {
   const [mounted, setMounted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [currentPage, setCurrentPage] = useState(1);
-  const [allGames, setAllGames] = useState(coreGameData);
+  const [allGames, setAllGames] = useState<Game[]>(games);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const GAMES_PER_PAGE = 6;
 
@@ -20,21 +20,8 @@ export default function HomePage() {
     setMounted(true);
     setPlayerScore(getPlayerScore());
     
-    // Lazy load all games after initial render
-    const loadAllGames = async () => {
-      setIsLoadingMore(true);
-      try {
-        const fullGames = await getExtendedGameData();
-        setAllGames(fullGames);
-      } catch (error) {
-        console.error('Failed to load extended games:', error);
-      } finally {
-        setIsLoadingMore(false);
-      }
-    };
-    
-    // Load after 1 second to prioritize initial render
-    setTimeout(loadAllGames, 1000);
+    // Games are already loaded from import, no need for lazy loading
+    setIsLoadingMore(false);
   }, []);
 
   const filteredGames = allGames.filter(game => selectedCategory === 'all' || game.category === selectedCategory);

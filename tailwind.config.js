@@ -50,24 +50,14 @@ module.exports = {
     },
   },
   plugins: [],
-  // Optimize for production
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: [
-      './pages/**/*.{js,ts,jsx,tsx}',
-      './components/**/*.{js,ts,jsx,tsx}',
-      './app/**/*.{js,ts,jsx,tsx}',
-    ],
-    options: {
-      safelist: [
-        'animate-bounce',
-        'animate-pulse',
-        'animate-wiggle',
-        'animate-spin',
-        'celebrate',
-        'shake',
-        'score-animation'
-      ]
-    }
-  }
+  // Tailwind v3 safelist
+  safelist: [
+    'animate-bounce',
+    'animate-pulse',
+    'animate-wiggle',
+    'animate-spin',
+    'celebrate',
+    'shake',
+    'score-animation'
+  ]
 }
