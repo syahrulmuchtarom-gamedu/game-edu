@@ -21,8 +21,8 @@ export default function HomePage() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const GAMES_PER_PAGE = 6;
   
-  // Memory optimization
-  useMemoryOptimization();
+  // Memory optimization disabled temporarily
+  // useMemoryOptimization();
 
   useEffect(() => {
     setMounted(true);
@@ -31,11 +31,11 @@ export default function HomePage() {
     // Games are already loaded from import, no need for lazy loading
     setIsLoadingMore(false);
     
-    // Performance monitoring (development only)
-    if (process.env.NODE_ENV === 'development') {
-      measurePerformance();
-      monitorFPS();
-    }
+    // Performance monitoring disabled temporarily
+    // if (process.env.NODE_ENV === 'development') {
+    //   measurePerformance();
+    //   monitorFPS();
+    // }
   }, []);
 
   const filteredGames = allGames.filter(game => selectedCategory === 'all' || game.category === selectedCategory);
