@@ -71,7 +71,8 @@ export default function CalendarDate() {
           break;
           
         case 'calendar':
-          const today = new Date();\n          const daysDiff = Math.floor((randomDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+          const today = new Date();
+          const daysDiff = Math.floor((randomDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
           newQuestions.push({
             type: 'date-diff',
             date: randomDate,
