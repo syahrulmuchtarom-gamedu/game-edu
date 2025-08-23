@@ -122,13 +122,13 @@ export default function WeatherClimate() {
     } else if (type === 'clothes') {
       correctAnswer = randomWeather.clothes[0];
       const allClothes = weathers.flatMap(w => w.clothes).filter(c => c !== correctAnswer);
-      wrongAnswers = [...new Set(allClothes)]
+      wrongAnswers = Array.from(new Set(allClothes))
         .sort(() => Math.random() - 0.5)
         .slice(0, 3);
     } else {
       correctAnswer = randomWeather.activities[0];
       const allActivities = weathers.flatMap(w => w.activities).filter(a => a !== correctAnswer);
-      wrongAnswers = [...new Set(allActivities)]
+      wrongAnswers = Array.from(new Set(allActivities))
         .sort(() => Math.random() - 0.5)
         .slice(0, 3);
     }

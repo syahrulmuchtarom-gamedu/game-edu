@@ -75,7 +75,7 @@ export default function HomePage() {
             🎮 Game Edukasi Anak
           </h1>
           <p className="text-xl text-white/90 mb-6">
-            Belajar sambil bermain dengan 15 permainan seru!
+            Belajar sambil bermain dengan 30 permainan seru!
           </p>
           
           {/* Score Display */}
