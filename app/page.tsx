@@ -7,6 +7,10 @@ import { getExtendedGameData } from '@/utils/gameDataSplit';
 import { getPlayerScore, PlayerScore } from '@/utils/scoreUtils';
 import ScoreTracker from '@/components/ScoreTracker';
 import LazyGameCard from '@/components/LazyGameCard';
+import CriticalCSS from '@/components/CriticalCSS';
+import ResourcePreloader from '@/components/ResourcePreloader';
+import { useMemoryOptimization } from '@/hooks/useMemoryOptimization';
+import { measurePerformance, monitorFPS } from '@/utils/performance';
 
 export default function HomePage() {
   const [playerScore, setPlayerScore] = useState<PlayerScore | null>(null);
@@ -16,6 +20,9 @@ export default function HomePage() {
   const [allGames, setAllGames] = useState<Game[]>(games);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const GAMES_PER_PAGE = 6;
+  
+  // Memory optimization
+  useMemoryOptimization();
 
   useEffect(() => {
     setMounted(true);
@@ -23,6 +30,12 @@ export default function HomePage() {
     
     // Games are already loaded from import, no need for lazy loading
     setIsLoadingMore(false);
+    
+    // Performance monitoring (development only)
+    if (process.env.NODE_ENV === 'development') {
+      measurePerformance();
+      monitorFPS();
+    }
   }, []);
 
   const filteredGames = allGames.filter(game => selectedCategory === 'all' || game.category === selectedCategory);
@@ -51,7 +64,10 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 p-4">
+    <>
+      <CriticalCSS />
+      <ResourcePreloader />
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
@@ -187,5 +203,6 @@ export default function HomePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
